@@ -1,4 +1,3 @@
-from telepot import Bot
 import os
 from time import sleep
 import json
@@ -51,6 +50,7 @@ class Main:
 		self.set_state(False)
 
 	def send_video_to_recipients(self, frames):
+		self.bot.sendMessage(self.config['chat_id'], 'Motion detected!')
 		name = os.path.join(gettempdir(), f'{random()}.mp4')
 		height, width, _ = frames[0].shape
 		vid = cv2.VideoWriter(name, cv2.VideoWriter_fourcc(*'mp4v'), 20.0, (width, height))
